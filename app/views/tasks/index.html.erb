@@ -1,0 +1,16 @@
+<h1>Tasks</h1>
+
+<% @tasks.each do |task| %>
+  <p>
+    <%= task.status %> 
+    <%= link_to 'Mark as complete', complete_task_path(task), method: :post %>
+  </p>
+<% end %>
+
+<h2>Add task</h2>
+
+<%= form_with(model: @task, local: true) do |form| %>
+  <%= form.label :status %>
+  <%= form.text_field :status %>
+  <%= form.submit "Create Task" %>
+<% end %>
